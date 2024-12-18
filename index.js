@@ -4,12 +4,14 @@ connectToDatabase();
 require('dotenv').config();
 const app = express();
 const PORT = process.env.PORT || 3000;
-const router = require('./routes/auth');
+const auth = require('./routes/auth');
+const category = require('./routes/category');
 
 app.use(express.json());
 
 
-app.use('/api', router);
+app.use('/api', auth);
+app.use('/category', category);
 
 app.get('/', (req, res) => {
     res.json({"message": "Hello World"});
